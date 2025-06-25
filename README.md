@@ -9,7 +9,7 @@ This project is licensed under the MIT License - see the [![License: MIT](https:
 EVOについて説明する図表を追加しました。   
 EVO本体を公開しました。
 
-2025.6.25
+2025.6.25  
 gemini_util.py部分を変更しました。
 2.0 Flashで安定することがわかったので、モデルをそちらに変更しました。
 また、プロンプト文もより厳密にしました。
