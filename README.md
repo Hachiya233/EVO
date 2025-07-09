@@ -23,4 +23,8 @@ gemini_util.py部分を変更しました。
 
 2025.6.26  
 EVOのGUIバージョンを公開しました。  
-また、GUIバージョンはGeminiのモデルを2.5 Flashに変更しています。
+また、GUIバージョンはGeminiのモデルを2.5 Flashに変更しています。  
+
+2025.7.9  
+EVO_GUIのevo_first.pyとgemini_util.pyを改良しました。  
+evo_firstには、機能改良機能(少し気持ち悪い表現ですが)を追加し、gemini_util.pyは現行のGemini APIの呼び出しコードに変更しました。
