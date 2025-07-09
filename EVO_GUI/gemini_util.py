@@ -1,9 +1,7 @@
 import os
-import google.generativeai as genai
+from google import genai
 
-genai.configure(api_key="")
-
-model = genai.GenerativeModel("gemini-2.5-flash")
+client = genai.Client()
 
 PROMPT_TEMPLATE = """
 あなたは、Pythonの標準ライブラリであるTkinterをベースにしたプラグインを生成するAIです。
@@ -168,6 +166,7 @@ PROMPT_TEMPLATE = """
 - `flet`, `PyQt`など、**`tkinter`,`Pygame`以外のGUIライブラリの使用は固く禁止します。**
 - `input()` 関数の使用は禁止です。
 - `os`, `subprocess`など、セキュリティ上問題のあるモジュールの使用は禁止です。
+- 必要に応じ、`os`,`subprocess`などのセキュリティ上問題のあるモジュールと、`flet`, `PyQt`など、**`tkinter`,`Pygame`以外のGUIライブラリ以外であれば、使用を認めます。例：OpenCVなど
 
 ### その他ルール
 - コード部分のみを出力し、説明やマークダウンは含めないでください。
@@ -180,7 +179,10 @@ PROMPT_TEMPLATE = """
 
 def generate_plugin_code(prompt: str) -> str:
     full_prompt = PROMPT_TEMPLATE.format(prompt=prompt)
-    response = model.generate_content(full_prompt)
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=full_prompt
+    )
     if not response.text:
         return ""
     
